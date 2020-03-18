@@ -1,0 +1,30 @@
+Process blocking:
+
+//Wait command is used to block the parent until atleast one child is terminated.
+
+#include<stdio.h>
+#include<unistd.h>
+#include<stdlib.h>
+#include<sys/wait.h>
+int main(void)
+{
+    pid_t pid;
+    int status;
+    if((pid = fork())<0)
+    {
+        printf("Fork error \n");
+    }
+    else if(pid == 0)
+     {
+        printf("Child has terminated \n");
+        exit(0);
+    }
+       if(wait(&status)!=pid)
+    {
+        printf("wait error \n");
+    }
+    else {
+        printf("parent has terminated\n");   
+    }
+return 0;
+}
