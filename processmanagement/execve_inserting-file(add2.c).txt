@@ -1,0 +1,11 @@
+// Execve :   Addition of 5 numbers with execve function
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+int main()
+{
+	int a=fork();
+	if(a==0)
+	execve("/home/Documents/linux/add2.out",NULL,NULL);
+}
